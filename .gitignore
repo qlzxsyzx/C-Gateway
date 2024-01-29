@@ -25,3 +25,5 @@ replay_pid*
 
 #排除.idea文件夹
 .idea/
+#排除target文件夹
+target/
