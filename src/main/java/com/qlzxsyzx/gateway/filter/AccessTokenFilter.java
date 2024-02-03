@@ -61,8 +61,7 @@ public class AccessTokenFilter implements GlobalFilter {
         } else {
             // access_token cookie过期，如果没有异端登录，redis token同时过期
             Object tokenObj = redisTemplate.opsForValue().get("token:" + cimUserId.getValue() + ":" + cimPlatform.getValue());
-            String redisToken = String.valueOf(tokenObj);
-            if (redisToken == null) {
+            if (tokenObj == null) {
                 // 检查是否有refresh_token
                 if (cookies.containsKey(TokenConstant.REFRESH_TOKEN_NAME)) {
                     // refresh_token 未过期，让oauth2刷新token
